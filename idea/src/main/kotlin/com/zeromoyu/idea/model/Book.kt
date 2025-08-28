@@ -287,10 +287,7 @@ class Book : PersistentStateComponent<Book.ReadingProgressState> {
         currentPageNumber = targetPage
         getStartEnd()
         
-        val content = getCurrentPageContent()
-        val pageInfo = "第${currentPageNumber}页/共${totalPages}页"
-        
-        return formatStatusBarContent(content, pageInfo)
+        return getCurrentPageContent()
     }
     
     fun getPreviousPageContent(): String {
