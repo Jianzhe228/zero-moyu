@@ -26,7 +26,7 @@
 | `Ctrl+Alt+.` | `Cmd+Alt+.` | 下一页 |
 | `Ctrl+Alt+,` | `Cmd+Alt+,` | 上一页 |
 | `Ctrl+Alt+;` | `Cmd+Alt+;` | 智能跳转（页码/关键词搜索） |
-| `Ctrl+M` | `Cmd+M` | 老板键（隐藏/显示阅读内容） |
+| `Ctrl+M` | `Cmd+M` | 老板键（隐藏阅读内容） |
 
 ### 📖 章节导航
 | 快捷键 (Windows/Linux) | 快捷键 (Mac) | 功能描述 |
