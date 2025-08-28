@@ -1,0 +1,5 @@
+cd vscode
+vsce package --allow-missing-repository
+
+cd idea
+gradle clean buildPlugin

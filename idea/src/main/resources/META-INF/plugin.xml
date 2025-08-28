@@ -1,0 +1,154 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.zeromoyu.idea</id>
+    <name>zero-moyu</name>
+    <vendor email="jianzhe@example.com" url="https://github.com/Jianzhe228/zero-moyu">Jianzhe</vendor>
+
+    <!-- Plugin icon -->
+    <icon>/META-INF/pluginIcon.svg</icon>
+    
+    <description><![CDATA[
+    <h2>zero-moyu - Discreet Novel Reading Plugin</h2>
+
+    <p>A discreet novel reading plugin for IntelliJ IDEA that allows you to read TXT novels while working, perfectly disguised as work.</p>
+
+    <p>一个让你在 IntelliJ IDEA 中x阅读 TXT 小说的插件，完美伪装成工作的样子。</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li><strong>Smart Reading</strong> - TXT novel reading with automatic encoding detection</li>
+        <li><strong>Boss Key</strong> - Instantly hide reading content with one key press</li>
+        <li><strong>Page Navigation</strong> - Customizable page size with next/previous page support</li>
+        <li><strong>Chapter Navigation</strong> - Smart chapter recognition and quick jumping</li>
+        <li><strong>Book Management</strong> - Complete library and recent reading history</li>
+        <li><strong>Status Bar Integration</strong> - Display content in status bar without occupying editor space</li>
+        <li><strong>Progress Saving</strong> - Auto-save reading progress for seamless continuation</li>
+        <li><strong>Smart Search</strong> - Page jumping and keyword search functionality</li>
+        <li><strong>Performance Monitoring</strong> - Memory usage monitoring, cache management, garbage collection</li>
+    </ul>
+
+    <h3>核心特性</h3>
+    <ul>
+        <li>📖 <strong>智能阅读</strong> - 支持 TXT 格式小说阅读，自动编码检测</li>
+        <li>🎯 <strong>老板键</strong> - 一键隐藏阅读内容，瞬间切换工作状态</li>
+        <li>📄 <strong>分页浏览</strong> - 自定义每页字数，支持上下页翻页</li>
+        <li>🧭 <strong>章节导航</strong> - 智能识别章节，支持快速跳转</li>
+        <li>📚 <strong>图书管理</strong> - 完整的图书库和最近阅读记录管理</li>
+        <li>🎨 <strong>状态栏集成</strong> - 在状态栏显示阅读内容，不占用编辑器空间</li>
+        <li>💾 <strong>进度保存</strong> - 自动保存阅读进度，断点续读</li>
+        <li>🔍 <strong>智能搜索</strong> - 支持页码跳转和关键词搜索</li>
+        <li>⚡ <strong>性能监控</strong> - 内存使用监控、缓存管理、垃圾回收</li>
+    </ul>
+
+    <h3>Keyboard Shortcuts</h3>
+    <ul>
+        <li><code>Ctrl+M</code> - Boss key (hide reading content)</li>
+        <li><code>Ctrl+Alt+. / ,</code> - Next/Previous page</li>
+        <li><code>Ctrl+Alt+] / [</code> - Next/Previous chapter</li>
+        <li><code>Ctrl+Alt+O</code> - Open book library</li>
+        <li><code>Ctrl+Alt+R</code> - Recent books</li>
+        <li><code>Ctrl+Alt+;</code> - Smart jump</li>
+    </ul>
+
+    <p><strong>Perfect for developers who want to enjoy reading during breaks without leaving their IDE.</strong></p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.zeromoyu.idea.service.BookManagerService"/>
+        <applicationConfigurable groupId="tools" displayName="zero-moyu"
+                               id="preferences.ZeroMoyuConfigurable"
+                               instance="com.zeromoyu.idea.config.ZeroMoyuConfigurable"/>
+        <notificationGroup id="zero-moyu" displayType="BALLOON" isLogByDefault="false"/>
+    </extensions>
+    
+    <actions>
+        <action id="ZeroMoyu.HideContent"
+                class="com.zeromoyu.idea.action.HideContentAction"
+                text="隐藏阅读内容"
+                description="隐藏状态栏中的阅读内容">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl M"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        
+        <action id="ZeroMoyu.NextPage" 
+                class="com.zeromoyu.idea.action.NextPageAction"
+                text="下一页"
+                description="翻到下一页">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt PERIOD"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        
+        <action id="ZeroMoyu.PreviousPage" 
+                class="com.zeromoyu.idea.action.PreviousPageAction"
+                text="上一页"
+                description="翻到上一页">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt COMMA"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        
+        <action id="ZeroMoyu.JumpToPage" 
+                class="com.zeromoyu.idea.action.JumpToPageAction"
+                text="跳转页面"
+                description="跳转到指定页面">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt SEMICOLON"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        
+        <action id="ZeroMoyu.NextChapter" 
+                class="com.zeromoyu.idea.action.NextChapterAction"
+                text="下一章"
+                description="跳转到下一章">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt CLOSE_BRACKET"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        
+        <action id="ZeroMoyu.PreviousChapter" 
+                class="com.zeromoyu.idea.action.PreviousChapterAction"
+                text="上一章"
+                description="跳转到上一章">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt OPEN_BRACKET"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        
+        <action id="ZeroMoyu.ShowChapterList" 
+                class="com.zeromoyu.idea.action.ShowChapterListAction"
+                text="显示章节列表"
+                description="显示当前书籍的章节列表">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt L"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        
+        <action id="ZeroMoyu.OpenBookLibrary" 
+                class="com.zeromoyu.idea.action.OpenBookLibraryAction"
+                text="打开图书库"
+                description="打开图书库管理界面">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt O"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        
+        <action id="ZeroMoyu.ShowRecentBooks"
+                class="com.zeromoyu.idea.action.ShowRecentBooksAction"
+                text="最近阅读"
+                description="显示最近阅读的书籍">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt R"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+
+        <group id="ZeroMoyu.AdvancedGroup" text="高级功能" description="zero-moyu 高级功能">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <separator/>
+
+            <action id="ZeroMoyu.MemoryMonitor"
+                    class="com.zeromoyu.idea.action.MemoryMonitorAction"
+                    text="内存监控"
+                    description="显示插件内存使用情况"/>
+
+            <action id="ZeroMoyu.ClearCache"
+                    class="com.zeromoyu.idea.action.ClearCacheAction"
+                    text="清理缓存"
+                    description="清理插件缓存以释放内存"/>
+        </group>
+    </actions>
+</idea-plugin>

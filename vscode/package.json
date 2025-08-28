@@ -1,0 +1,150 @@
+{
+	"name": "zero-moyu",
+	"displayName": "zero-moyu",
+	"version": "1.0.0",
+	"publisher": "Jianzhe",
+	"icon": "images/moyu.png",
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "zero-moyu",
+			"type": "object",
+			"properties": {
+				"zero-moyu.pageSize": {
+					"type": "number",
+					"default": 50,
+					"description": "每页文字数量"
+				},
+				"zero-moyu.lineBreak": {
+					"type": "string",
+					"default": " ",
+					"description": "换行分隔符号，默认一个空格"
+				},
+				"zero-moyu.recentFiles": {
+					"type": "array",
+					"default": [],
+					"description": "最近阅读的文件列表"
+				},
+				"zero-moyu.fileLibrary": {
+					"type": "array",
+					"default": [],
+					"description": "小说文件库"
+				},
+				"zero-moyu.readingProgress": {
+					"type": "object",
+					"default": {},
+					"description": "各文件的阅读进度记录"
+				},
+				"zero-moyu.maxRecentFiles": {
+					"type": "number",
+					"default": 10,
+					"description": "最近阅读列表最大数量"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "extension.hideContent",
+				"title": "zero-moyu: 隐藏阅读内容"
+			},
+			{
+				"command": "extension.getPreviousPage",
+				"title": "zero-moyu: 上一页"
+			},
+			{
+				"command": "extension.getNextPage",
+				"title": "zero-moyu: 下一页"
+			},
+			{
+				"command": "extension.getJumpingPage",
+				"title": "zero-moyu: 跳转"
+			},
+			{
+				"command": "extension.getPreviousChapter",
+				"title": "zero-moyu: 上一章"
+			},
+			{
+				"command": "extension.getNextChapter",
+				"title": "zero-moyu: 下一章"
+			},
+			{
+				"command": "extension.showChapterList",
+				"title": "zero-moyu: 显示目录"
+			},
+			{
+				"command": "extension.showRecentFiles",
+				"title": "zero-moyu: 最近阅读"
+			},
+			{
+				"command": "extension.showFileLibrary",
+				"title": "zero-moyu: 图书库"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.getPreviousPage",
+				"key": "ctrl+alt+,",
+				"mac": "cmd+,",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.getNextPage",
+				"key": "ctrl+alt+.",
+				"mac": "cmd+.",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.getPreviousChapter",
+				"key": "ctrl+alt+[",
+				"mac": "cmd+[",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.getNextChapter",
+				"key": "ctrl+alt+]",
+				"mac": "cmd+]",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.showChapterList",
+				"key": "ctrl+alt+l",
+				"mac": "cmd+l"
+			},
+			{
+				"command": "extension.showRecentFiles",
+				"key": "ctrl+alt+r",
+				"mac": "cmd+r"
+			},
+			{
+				"command": "extension.showFileLibrary",
+				"key": "ctrl+alt+o",
+				"mac": "cmd+o"
+			},
+			{
+				"command": "extension.hideContent",
+				"key": "ctrl+m",
+				"mac": "cmd+m"
+			},
+			{
+				"command": "extension.smartJump",
+				"key": "ctrl+alt+;",
+				"mac": "cmd+alt+;"
+			}
+		]
+	},
+	"scripts": {
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^16.18.126",
+		"@types/vscode": "^1.75.0",
+		"typescript": "^4.9.5"
+	},
+	"dependencies": {
+		"iconv-lite": "^0.7.0"
+	}
+}

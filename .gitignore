@@ -1,0 +1,9 @@
+.claude
+.idea
+.vscode
+idea/.gradle
+idea/build
+idea/gradle
+vscode/node_modules
+vscode/.vscodeignore
+vscode/package-lock.json
