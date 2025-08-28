@@ -1,4 +1,4 @@
-# 📚 Thief-Book-Plus - 摸鱼看书神器
+# 📚 zero-moyu
 
 一个让你在 IntelliJ IDEA 和 vscode 阅读 TXT 小说的插件，完美伪装成工作的样子。
 
