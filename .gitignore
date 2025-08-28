@@ -7,4 +7,3 @@ idea/gradle
 vscode/node_modules
 vscode/.vscodeignore
 vscode/package-lock.json
-plugin
