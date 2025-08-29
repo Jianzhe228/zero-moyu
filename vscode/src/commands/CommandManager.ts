@@ -1,4 +1,3 @@
-// CommandManager.ts - 修复后的完整代码
 import * as vscode from 'vscode';
 import { BookManagerService } from '../services/BookManagerService';
 import { ConfigurationService } from '../services/ConfigurationService';
@@ -238,7 +237,7 @@ export class CommandManager {
     }
 
     /**
-     * 显示章节列表 - 修复ctrl+alt+l快捷键无法使用的问题
+     * 显示章节列表
      */
     private async showChapterList(): Promise<void> {
         try {
@@ -281,7 +280,7 @@ export class CommandManager {
     }
 
     /**
-     * 显示图书库 - 显示图书列表，支持添加、删除和选择阅读
+     * 显示图书库
      */
     private async showFileLibrary(): Promise<void> {
         try {
@@ -332,7 +331,7 @@ export class CommandManager {
     }
 
     /**
-     * 选择图书阅读 - 修复显示阅读进度
+     * 选择图书阅读
      */
     private async selectBookToRead(fileLibrary: string[]): Promise<void> {
         const items = fileLibrary.map(file => {
@@ -378,7 +377,7 @@ export class CommandManager {
                 'Text Files': ['txt']
             }
         });
-    
+
         if (uris) {
             const filePaths = uris.map(uri => uri.fsPath);
             const addedCount = await this.bookManagerService.addBooksToLibrary(filePaths);
@@ -439,7 +438,7 @@ export class CommandManager {
     }
 
     /**
-     * 显示最近阅读 - 修复ctrl+alt+r快捷键无法使用的问题
+     * 显示最近阅读 
      */
     private async showRecentFiles(): Promise<void> {
         const recentFiles = this.configService.getRecentFiles();
@@ -500,14 +499,64 @@ export class CommandManager {
         const memoryUsage = this.bookManagerService.getMemoryUsage();
         const config = this.configService.getAllConfig();
 
-        const message = `内存使用情况：
-缓存图书数量: ${memoryUsage.booksCount}
-图书库数量: ${config.libraryCount}
-最近阅读数量: ${config.recentFilesCount}
-每页字数: ${config.pageSize}
-最大最近文件数: ${config.maxRecentFiles}`;
+        const message = `📊 内存使用情况：
+    ━━━━━━━━━━━━━━━━━━━━
+    缓存图书数量: ${memoryUsage.booksCount} 本
+    内存使用: ${memoryUsage.memoryUsageMB.toFixed(2)} MB / ${memoryUsage.maxMemoryMB} MB
+    图书库数量: ${config.libraryCount} 本
+    最近阅读数量: ${config.recentFilesCount} 本
+    ━━━━━━━━━━━━━━━━━━━━
+    缓存详情:
+    ${memoryUsage.details.join('\n')}`;
 
-        this.showAutoCloseMessage(message, 5000);
+        // 显示带操作按钮的消息
+        vscode.window.showInformationMessage(
+            message,
+            '清理缓存',
+            '调整缓存策略'
+        ).then(selection => {
+            if (selection === '清理缓存') {
+                this.clearCache();
+            } else if (selection === '调整缓存策略') {
+                this.showCacheSettings();
+            }
+        });
+    }
+
+    private async showCacheSettings(): Promise<void> {
+        const maxBooks = await vscode.window.showInputBox({
+            prompt: '设置最大缓存图书数量',
+            value: '5',
+            validateInput: (value) => {
+                const num = parseInt(value);
+                if (isNaN(num) || num < 1) {
+                    return '请输入大于0的数字';
+                }
+                return null;
+            }
+        });
+
+        if (maxBooks) {
+            const maxMemory = await vscode.window.showInputBox({
+                prompt: '设置最大内存使用量(MB)',
+                value: '100',
+                validateInput: (value) => {
+                    const num = parseInt(value);
+                    if (isNaN(num) || num < 10) {
+                        return '请输入大于10的数字';
+                    }
+                    return null;
+                }
+            });
+
+            if (maxMemory) {
+                this.bookManagerService.configureCacheStrategy(
+                    parseInt(maxBooks),
+                    parseInt(maxMemory)
+                );
+                this.showAutoCloseMessage('缓存策略已更新', 3000);
+            }
+        }
     }
 
     /**

@@ -5,8 +5,6 @@ import * as iconv from 'iconv-lite';
 
 /**
  * 图书模型
- * 表示一本图书的所有信息和操作
- * 重构后的版本，参考IDEA插件的优秀实现
  */
 export class Book {
     private currentPageNumber: number = 1;
@@ -16,12 +14,12 @@ export class Book {
     private chapters: Chapter[] = [];
     private fileService: FileService;
 
-    // 缓存机制 - 学习IDEA插件
+    // 缓存机制
     private cachedText: string | null = null;
     private cachedFilePath: string = '';
     private cachedConfig: BookConfig | null = null;
 
-    // 分页边界计算 - 学习IDEA插件
+    // 分页边界计算
     private start: number = 0;
     private end: number = 0;
 
@@ -52,7 +50,7 @@ export class Book {
     }
 
     /**
-     * 初始化图书 - 重构版本，学习IDEA插件
+     * 初始化图书
      */
     async initialize(): Promise<void> {
         try {
@@ -74,7 +72,7 @@ export class Book {
     }
 
     /**
-     * 读取文件 - 学习IDEA插件的实现
+     * 读取文件
      */
     private readFile(): string {
         if (this.filePath === '') {
@@ -111,7 +109,7 @@ export class Book {
     }
 
     /**
-     * 文本内容处理 - 学习IDEA插件的processTextContent
+     * 文本内容处理
      */
     private processTextContent(data: string, config: BookConfig): string {
         // 使用StringBuilder优化字符串处理性能
@@ -146,7 +144,7 @@ export class Book {
     }
 
     /**
-     * 字符集检测 - 学习IDEA插件
+     * 字符集检测
      */
     private detectCharset(bytes: Buffer): string {
         // 简单的字符集检测，优先UTF-8
@@ -164,7 +162,7 @@ export class Book {
     }
 
     /**
-     * 获取缓存配置 - 学习IDEA插件
+     * 获取缓存配置
      */
     private getCachedConfig(): BookConfig {
         if (this.cachedConfig === null) {
@@ -177,7 +175,7 @@ export class Book {
     }
 
     /**
-     * 计算分页边界 - 学习IDEA插件的getStartEnd
+     * 计算分页边界
      */
     private getStartEnd(): void {
         this.start = (this.currentPageNumber - 1) * this.pageSize;
@@ -190,7 +188,7 @@ export class Book {
     }
 
     /**
-     * 获取当前页内容 - 重构版本
+     * 获取当前页内容
      */
     getCurrentPageContent(): string {
         const text = this.readFile();
@@ -206,7 +204,7 @@ export class Book {
     }
 
     /**
-     * 获取指定页面内容 - 重构版本
+     * 获取指定页面内容
      */
     getPageContent(pageNumber: number): string {
         if (pageNumber < 1 || pageNumber > this.totalPages) {
@@ -221,7 +219,7 @@ export class Book {
     }
 
     /**
-     * 跳转到指定页面 - 学习IDEA插件的getJumpingPage
+     * 跳转到指定页面
      */
     private getJumpingPage(targetPage: number = this.currentPageNumber): string {
         if (targetPage < 1 || targetPage > this.totalPages) {
@@ -235,7 +233,7 @@ export class Book {
     }
 
     /**
-     * 获取当前页内容并格式化显示（包含页码信息）- 学习IDEA插件的formatStatusBarContent
+     * 获取当前页内容并格式化显示（包含页码信息）
      */
     getFormattedCurrentPageContent(): string {
         const content = this.getCurrentPageContent();
@@ -244,7 +242,7 @@ export class Book {
     }
 
     /**
-     * 格式化状态栏内容 - 学习IDEA插件的实现
+     * 格式化状态栏内容
      */
     private formatStatusBarContent(content: string, pageInfo: string): string {
         if (!content) {
@@ -280,7 +278,7 @@ export class Book {
     }
 
     /**
-     * 分页导航 - 学习IDEA插件的getPage方法
+     * 分页导航
      */
     private getPage(type: string): number {
         let page = 0;
@@ -299,7 +297,7 @@ export class Book {
     }
 
     /**
-     * 下一页 - 重构版本
+     * 下一页
      */
     nextPage(): string {
         const nextPageNum = this.getPage('next');
@@ -307,7 +305,7 @@ export class Book {
     }
 
     /**
-     * 上一页 - 重构版本
+     * 上一页
      */
     previousPage(): string {
         const prevPageNum = this.getPage('previous');
@@ -315,14 +313,14 @@ export class Book {
     }
 
     /**
-     * 跳转到指定页面 - 重构版本
+     * 跳转到指定页面
      */
     jumpToPage(pageNumber: number): string {
         return this.getJumpingPage(pageNumber);
     }
 
     /**
-     * 智能跳转（页码或关键词搜索）- 重构版本
+     * 智能跳转（页码或关键词搜索）
      */
     smartJump(input: string): string | null {
         // 尝试解析为数字
@@ -338,7 +336,7 @@ export class Book {
     }
 
     /**
-     * 搜索文本 - 学习IDEA插件的searchText方法
+     * 搜索文本
      */
     searchText(keyword: string): string | null {
         if (!keyword || keyword.trim() === '') {
@@ -360,7 +358,7 @@ export class Book {
     }
 
     /**
-     * 下一章 - 学习IDEA插件的jumpToNextChapter
+     * 下一章
      */
     nextChapter(): string {
         const chapters = this.getChapters();
@@ -382,7 +380,7 @@ export class Book {
     }
 
     /**
-     * 上一章 - 学习IDEA插件的jumpToPreviousChapter
+     * 上一章
      */
     previousChapter(): string {
         const chapters = this.getChapters();
@@ -404,7 +402,7 @@ export class Book {
     }
 
     /**
-     * 获取章节列表 - 学习IDEA插件
+     * 获取章节列表
      */
     getChapters(): Chapter[] {
         if (this.chapters.length === 0) {
@@ -414,7 +412,7 @@ export class Book {
     }
 
     /**
-     * 获取章节标题列表（兼容旧接口）- 修复重复标题问题
+     * 获取章节标题列表（兼容旧接口）
      */
     getChapterList(): string[] {
         return this.getChapters().map(chapter =>
@@ -423,7 +421,7 @@ export class Book {
     }
 
     /**
-     * 跳转到指定章节 - 学习IDEA插件
+     * 跳转到指定章节
      */
     jumpToChapter(chapterIndex: number): string {
         const chapters = this.getChapters();
@@ -437,7 +435,7 @@ export class Book {
     }
 
     /**
-     * 获取当前章节信息 - 学习IDEA插件
+     * 获取当前章节信息
      */
     getCurrentChapter(): Chapter | null {
         const chapters = this.getChapters();
@@ -482,7 +480,7 @@ export class Book {
     }
 
     /**
-     * 刷新配置 - 重构版本，学习IDEA插件
+     * 刷新配置
      */
     refreshConfiguration(): void {
         this.pageSize = this.configService.getPageSize();
@@ -498,7 +496,7 @@ export class Book {
     }
 
     /**
-     * 计算总页数 - 重构版本
+     * 计算总页数
      */
     private calculateTotalPages(): void {
         const text = this.readFile();
@@ -506,7 +504,7 @@ export class Book {
     }
 
     /**
-     * 清理缓存 - 修复版本，避免 Proxy 错误
+     * 清理缓存
      */
     cleanup(): void {
         try {
@@ -536,14 +534,14 @@ export class Book {
     }
 
     /**
-     * 识别章节 - 完全重构，学习IDEA插件的detectChapters方法
+     * 识别章节
      */
     private identifyChapters(): void {
         this.chapters = this.detectChapters();
     }
 
     /**
-     * 章节检测 - 学习IDEA插件的精确实现
+     * 章节检测
      */
     private detectChapters(): Chapter[] {
         const text = this.readFile();
@@ -552,7 +550,7 @@ export class Book {
 
         console.log('开始章节检测...');
 
-        // 更精确的章节检测 - 完全按照IDEA插件的模式
+        // 更精确的章节检测
         const patterns = [
             // 中文章节：第X章 + 空格/标点
             /第[一二三四五六七八九十百千万\d]+章[\s：:,.。]/g,
@@ -568,7 +566,7 @@ export class Book {
             /第\d+节[\s：:,.。]/g
         ];
 
-        // 获取配置中的分隔符 - 这是关键！
+        // 获取配置中的分隔符
         const config = this.getCachedConfig();
         const lineBreak = config.lineBreak;
 
@@ -657,7 +655,7 @@ export class Book {
 }
 
 /**
- * 配置接口 - 学习IDEA插件
+ * 配置接口
  */
 interface BookConfig {
     pageSize: number;

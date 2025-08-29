@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 echo ========================================
-echo    Thief-Book-Plus Plugin Build Script
+echo    zero-moyu Plugin Build Script
 echo ========================================
 
 REM Create plugin directory

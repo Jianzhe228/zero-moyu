@@ -281,7 +281,7 @@ class ZeroMoyuConfigurable : Configurable {
             // 强制垃圾回收
             System.gc()
 
-            Messages.showInfoMessage("缓存已清理", "Thief-Book-Plus")
+            Messages.showInfoMessage("缓存已清理", "ZeroMoyu-Book")
 
             // 刷新内存信息
             refreshMemoryInfo()
@@ -310,7 +310,7 @@ class ZeroMoyuConfigurable : Configurable {
 
             Messages.showInfoMessage(
                 "垃圾回收完成\n释放内存: ${freedMemory} MB",
-                "Thief-Book-Plus"
+                "ZeroMoyu-Book"
             )
 
             // 刷新内存信息
@@ -396,7 +396,7 @@ class ZeroMoyuConfigurable : Configurable {
             bookManager.setLineBreak(lineBreak)
             bookManager.setMaxRecentFiles(maxRecentFiles)
 
-            Messages.showInfoMessage("设置已保存", "Thief-Book-Plus")
+            Messages.showInfoMessage("设置已保存", "ZeroMoyu-Book")
 
         } catch (e: NumberFormatException) {
             Messages.showErrorDialog("请输入有效的数字", "错误")

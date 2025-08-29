@@ -1,4 +1,3 @@
-// services/ConfigurationService.ts - 完整修复版本
 import * as vscode from 'vscode';
 
 export class ConfigurationService {
@@ -31,7 +30,7 @@ export class ConfigurationService {
     }
 
     /**
-     * 更新最近阅读文件列表 - 修复版本
+     * 更新最近阅读文件列表 
      */
     async updateRecentFiles(files: string[]): Promise<void> {
         try {
@@ -49,7 +48,7 @@ export class ConfigurationService {
     }
 
     /**
-     * 获取图书库文件列表 - 修复版本
+     * 获取图书库文件列表 
      */
     getFileLibrary(): string[] {
         const library = vscode.workspace.getConfiguration(ConfigurationService.CONFIG_SECTION)
@@ -59,7 +58,7 @@ export class ConfigurationService {
     }
 
     /**
-     * 更新图书库文件列表 - 完全修复版本（这是关键！）
+     * 更新图书库文件列表 
      */
     async updateFileLibrary(files: string[]): Promise<void> {
         try {
@@ -106,7 +105,7 @@ export class ConfigurationService {
     }
 
     /**
-     * 保存阅读进度 - 修复版本
+     * 保存阅读进度 
      */
     async saveReadingProgress(filePath: string, progress: any): Promise<void> {
         try {
@@ -134,7 +133,7 @@ export class ConfigurationService {
     }
 
     /**
-     * 移除指定文件的阅读进度 - 修复版本
+     * 移除指定文件的阅读进度 
      */
     async removeReadingProgress(filePath: string): Promise<void> {
         try {

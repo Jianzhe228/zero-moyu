@@ -12,9 +12,9 @@ import javax.swing.JComponent
 import javax.swing.JLabel
 
 class BookStatusBarWidgetFactory : StatusBarWidgetFactory {
-    override fun getId(): String = "ThiefBookStatusBarWidget"
+    override fun getId(): String = "ZeroMoyuBookStatusBarWidget"
     
-    override fun getDisplayName(): String = "Thief-Book"
+    override fun getDisplayName(): String = "ZeroMoyu-Book"
     
     override fun isAvailable(project: Project): Boolean = true
     
@@ -37,7 +37,7 @@ class BookStatusBarWidget(private val project: Project) : StatusBarWidget, Statu
     fun getComponent(): JComponent {
         if (myComponent == null) {
             myComponent = JLabel().apply {
-                toolTipText = "Thief-Book - 点击右键查看选项"
+                toolTipText = "ZeroMoyu-Book - 点击右键查看选项"
                 addMouseListener(object : java.awt.event.MouseAdapter() {
                     override fun mouseClicked(e: MouseEvent) {
                         if (e.button == MouseEvent.BUTTON3) { // 右键点击
@@ -51,7 +51,7 @@ class BookStatusBarWidget(private val project: Project) : StatusBarWidget, Statu
         return myComponent!!
     }
 
-    override fun ID(): String = "ThiefBookStatusBarWidget"
+    override fun ID(): String = "ZeroMoyuBookStatusBarWidget"
 
     override fun getPresentation(): StatusBarWidget.WidgetPresentation = this
 
@@ -59,7 +59,7 @@ class BookStatusBarWidget(private val project: Project) : StatusBarWidget, Statu
 
     override fun getAlignment(): Float = 0.0f
 
-    override fun getTooltipText(): String = "Thief-Book - 摸鱼看书神器"
+    override fun getTooltipText(): String = "ZeroMoyu-Book - 摸鱼看书神器"
     
     fun updateContent() {
         ApplicationManager.getApplication().invokeLater {
