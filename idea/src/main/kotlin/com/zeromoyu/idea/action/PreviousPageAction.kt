@@ -8,7 +8,7 @@ import com.zeromoyu.idea.service.BookManagerService
 class PreviousPageAction : AnAction("上一页", "翻到上一页", null) {
     
     override fun actionPerformed(e: AnActionEvent) {
-        val project = e.getRequiredData(CommonDataKeys.PROJECT)
+        val project = e.getData(CommonDataKeys.PROJECT) ?: return
         val bookManager = BookManagerService.getInstance()
         
         if (!bookManager.ensureBookAvailable(project)) {

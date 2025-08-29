@@ -759,7 +759,8 @@ class BookManagerService : PersistentStateComponent<BookManagerService.BookManag
     fun forceGarbageCollection() {
         try {
             System.gc()
-            System.runFinalization()
+            // 移除了 System.runFinalization()
+            Thread.sleep(100) // 给GC一点时间
             System.gc()
             logger.info("🗑️ Forced garbage collection")
             logMemoryUsage()

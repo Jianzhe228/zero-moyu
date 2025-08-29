@@ -8,7 +8,7 @@ import com.zeromoyu.idea.ui.BookLibraryDialog
 class OpenBookLibraryAction : AnAction("打开图书库", "打开图书库管理界面", null) {
     
     override fun actionPerformed(e: AnActionEvent) {
-        val project = e.getRequiredData(CommonDataKeys.PROJECT)
+        val project = e.getData(CommonDataKeys.PROJECT) ?: return
         BookLibraryDialog(project).show()
     }
     

@@ -1,1 +1,1 @@
-rootProject.name = "zero-moyu-idea"
+rootProject.name = "zero-moyu"

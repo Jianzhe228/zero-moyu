@@ -297,9 +297,9 @@ class ZeroMoyuConfigurable : Configurable {
                 (it.totalMemory() - it.freeMemory()) / 1024 / 1024
             }
 
-            // 强制垃圾回收
+            // 强制垃圾回收（移除了 System.runFinalization()）
             System.gc()
-            System.runFinalization()
+            Thread.sleep(100) // 给GC一点时间
             System.gc()
 
             val afterMemory = Runtime.getRuntime().let {

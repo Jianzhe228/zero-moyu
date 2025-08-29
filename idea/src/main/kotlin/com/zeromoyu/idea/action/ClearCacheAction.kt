@@ -12,7 +12,7 @@ class ClearCacheAction : AnAction("清理缓存", "清理插件缓存以释放�
     
     override fun actionPerformed(e: AnActionEvent) {
         try {
-            val project = e.getRequiredData(CommonDataKeys.PROJECT)
+            val project = e.getData(CommonDataKeys.PROJECT) ?: return
             val bookManager = BookManagerService.getInstance()
             
             logger.info("Clear cache action triggered")

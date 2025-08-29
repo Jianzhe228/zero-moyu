@@ -9,7 +9,7 @@ import com.zeromoyu.idea.ui.ChapterListDialog
 class ShowChapterListAction : AnAction("显示章节列表", "显示当前书籍的章节列表", null) {
     
     override fun actionPerformed(e: AnActionEvent) {
-        val project = e.getRequiredData(CommonDataKeys.PROJECT)
+        val project = e.getData(CommonDataKeys.PROJECT) ?: return
         val bookManager = BookManagerService.getInstance()
 
         if (!bookManager.ensureBookAvailable(project)) {

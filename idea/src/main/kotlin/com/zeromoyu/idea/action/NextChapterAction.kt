@@ -9,7 +9,7 @@ import com.zeromoyu.idea.utils.NotificationUtils
 class NextChapterAction : AnAction("下一章", "跳转到下一章", null) {
     
     override fun actionPerformed(e: AnActionEvent) {
-        val project = e.getRequiredData(CommonDataKeys.PROJECT)
+        val project = e.getData(CommonDataKeys.PROJECT) ?: return
         val bookManager = BookManagerService.getInstance()
         
         if (!bookManager.ensureBookAvailable(project)) {

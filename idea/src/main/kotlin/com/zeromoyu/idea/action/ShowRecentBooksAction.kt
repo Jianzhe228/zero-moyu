@@ -8,7 +8,7 @@ import com.zeromoyu.idea.ui.RecentBooksDialog
 class ShowRecentBooksAction : AnAction("最近阅读", "显示最近阅读的书籍", null) {
     
     override fun actionPerformed(e: AnActionEvent) {
-        val project = e.getRequiredData(CommonDataKeys.PROJECT)
+        val project = e.getData(CommonDataKeys.PROJECT) ?: return
         RecentBooksDialog(project).show()
     }
     

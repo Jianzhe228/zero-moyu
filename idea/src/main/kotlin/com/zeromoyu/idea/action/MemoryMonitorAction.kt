@@ -12,7 +12,7 @@ class MemoryMonitorAction : AnAction("内存监控", "显示插件内存使用�
     
     override fun actionPerformed(e: AnActionEvent) {
         try {
-            val project = e.getRequiredData(CommonDataKeys.PROJECT)
+            val project = e.getData(CommonDataKeys.PROJECT) ?: return
             val bookManager = BookManagerService.getInstance()
             
             logger.info("Memory monitor action triggered")
