@@ -12,24 +12,21 @@
 
     <p>A discreet novel reading plugin for IntelliJ IDEA that allows you to read TXT novels while working, perfectly disguised as work.</p>
 
-    <p>一个让你在 IntelliJ IDEA 中x阅读 TXT 小说的插件，完美伪装成工作的样子。</p>
+    <p>一个让你在 IntelliJ IDEA 中阅读 TXT 小说的插件，完美伪装成工作的样子。</p>
 
     <h3>Key Features</h3>
     <ul>
-        <li><strong>Smart Reading</strong> - TXT novel reading with automatic encoding detection</li>
-        <li><strong>Boss Key</strong> - Instantly hide reading content with one key press</li>
-        <li><strong>Page Navigation</strong> - Customizable page size with next/previous page support</li>
-        <li><strong>Chapter Navigation</strong> - Smart chapter recognition and quick jumping</li>
-        <li><strong>Book Management</strong> - Complete library and recent reading history</li>
-        <li><strong>Status Bar Integration</strong> - Display content in status bar without occupying editor space</li>
-        <li><strong>Progress Saving</strong> - Auto-save reading progress for seamless continuation</li>
-        <li><strong>Smart Search</strong> - Page jumping and keyword search functionality</li>
-        <li><strong>Performance Monitoring</strong> - Memory usage monitoring, cache management, garbage collection</li>
+        <li>🎯 <strong>Boss Key</strong> - Instantly hide reading content with one key press, switch to work mode instantly</li>
+        <li>📄 <strong>Page Navigation</strong> - Customizable page size with next/previous page support</li>
+        <li>🧭 <strong>Chapter Navigation</strong> - Smart chapter recognition and quick jumping</li>
+        <li>📚 <strong>Book Management</strong> - Complete library and recent reading history management</li>
+        <li>🎨 <strong>Status Bar Integration</strong> - Display content in status bar without occupying editor space</li>
+        <li>💾 <strong>Progress Saving</strong> - Auto-save reading progress for seamless continuation</li>
+        <li>🔍 <strong>Smart Search</strong> - Page jumping and keyword search functionality</li>
     </ul>
 
     <h3>核心特性</h3>
     <ul>
-        <li>📖 <strong>智能阅读</strong> - 支持 TXT 格式小说阅读，自动编码检测</li>
         <li>🎯 <strong>老板键</strong> - 一键隐藏阅读内容，瞬间切换工作状态</li>
         <li>📄 <strong>分页浏览</strong> - 自定义每页字数，支持上下页翻页</li>
         <li>🧭 <strong>章节导航</strong> - 智能识别章节，支持快速跳转</li>
@@ -37,7 +34,6 @@
         <li>🎨 <strong>状态栏集成</strong> - 在状态栏显示阅读内容，不占用编辑器空间</li>
         <li>💾 <strong>进度保存</strong> - 自动保存阅读进度，断点续读</li>
         <li>🔍 <strong>智能搜索</strong> - 支持页码跳转和关键词搜索</li>
-        <li>⚡ <strong>性能监控</strong> - 内存使用监控、缓存管理、垃圾回收</li>
     </ul>
 
     <h3>Keyboard Shortcuts</h3>
@@ -50,7 +46,16 @@
         <li><code>Ctrl+Alt+;</code> - Smart jump</li>
     </ul>
 
+    <h3>常见问题</h3>
+    <ul>
+        <li><strong>Q: 图书无法打开或显示乱码？</strong><br>A: 确保文件是 TXT 格式，确保是UTF-8格式</li>
+        <li><strong>Q: 快捷键不生效？</strong><br>A: 检查是否有其他插件占用了相同的快捷键</li>
+        <li><strong>Q: 状态栏内容显示不完整？</strong><br>A: 调整 IDE 窗口大小或减少每页字数设置</li>
+    </ul>
+
     <p><strong>Perfect for developers who want to enjoy reading during breaks without leaving their IDE.</strong></p>
+    
+    <p><strong>💡 温馨提示: 工作之余，适度阅读，劳逸结合 📚✨</strong></p>
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
