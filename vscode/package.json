@@ -1,7 +1,7 @@
 {
 	"name": "zero-moyu",
 	"displayName": "zero-moyu",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"publisher": "Jianzhe",
 	"icon": "images/moyu.png",
 	"engines": {
