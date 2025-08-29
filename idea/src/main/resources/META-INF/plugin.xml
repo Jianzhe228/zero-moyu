@@ -3,6 +3,7 @@
     <id>com.zeromoyu.idea</id>
     <name>zero-moyu</name>
     <version>1.0.1</version>
+    <idea-version since-build="213" until-build="252.*"/>
     <vendor email="jianzhe@example.com" url="https://github.com/Jianzhe228/zero-moyu">Jianzhe</vendor>
 
     <!-- Plugin icon -->
