@@ -50,6 +50,8 @@ A: 检查是否有其他插件占用了相同的快捷键
 
 **Q: 状态栏内容显示不完整？**
 A: 调整 IDE 窗口大小或减少每页字数设置。
+**Q: IDEA无法显示**
+A: 关闭底部状态栏，点击View->Appearance->Navigation Bar->Don`t show 
 
 ---
 
